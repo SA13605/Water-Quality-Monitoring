@@ -1,52 +1,96 @@
-.navbar{
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-    /* background-color: #131313; */
-    color: rgb(0, 0, 0);
-    width: 100%;
-    height: 10vh;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logoImg{
-    width: 150px;
-    height: 100px;
-    border-radius: 50%;
-    margin-left: 25px;
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #ffffff; /* Dark navy */
+  color: rgb(0, 0, 0);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.nav-links{
-    margin-left: 200px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 30%;
-    list-style: none;
-    font-size: 20px;
+/* Logo */
+.logoImg {
+  height: 45px;
+  cursor: pointer;
 }
 
-.nav-links li{
-    margin-left: 100px;
-    cursor: pointer;
-    text-decoration: none;
+/* Navigation links container */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
 }
 
-.navLinks{
-    text-decoration: none;
-    color: black;
-    font-size: 25px;
+/* Links */
+.navLinks {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.navLinks:hover{
-    color: #007bff;
-    background-color: #e0b9b9;
+.navLinks:hover {
+  color: #38bdf8; /* Light blue */
 }
 
-.user-icon{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-left: 550px;
+/* Underline animation */
+.navLinks::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background-color: #38bdf8;
+  transition: 0.3s ease;
 }
 
+.navLinks:hover::after {
+  width: 100%;
+}
 
+/* User icon */
+.user-icon {
+  height: 35px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.user-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .navLinks {
+    font-size: 14px;
+  }
+
+  .logoImg {
+    height: 35px;
+  }
+
+  .user-icon {
+    height: 30px;
+  }
+}
