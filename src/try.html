@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Live Water Readings</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f9ff;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px;
+}
+
+.box {
+    background: #0077B6;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+/* Center last div */
+.center-box {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 33%;
+    background: #E63946;
+}
+</style>
+
+</head>
+<body>
+
+<h2 style="text-align:center;">Live Water Quality Readings</h2>
+
+<div class="main">
+
+    <div class="box" id="temp">Temp</div>
+    <div class="box" id="ph">pH</div>
+    <div class="box" id="tds">TDS</div>
+    <div class="box" id="turbidity">Turbidity</div>
+    <div class="box" id="orp">ORP</div>
+
+    <!-- Last Row Center -->
+    <div class="box center-box" id="alert">Alert</div>
+
+</div>
+
+<script>
+
+// Your JSON data (latest feed)
+const data = {
+"feeds":[
+{"created_at":"2026-02-18T05:13:16Z",
+"entry_id":853,
+"field1":"28.81",
+"field2":"8.20",
+"field3":"0.00",
+"field4":"455.10",
+"field5":"1308.44",
+"field6":null}
+]
+};
+
+// Get latest entry
+let latest = data.feeds[0];
+
+// Display values
+document.getElementById("temp").innerHTML = "🌡 Temp: " + latest.field1 + " °C";
+document.getElementById("ph").innerHTML = "🧪 pH: " + latest.field2;
+document.getElementById("tds").innerHTML = "💧 TDS: " + latest.field3 + " ppm";
+document.getElementById("turbidity").innerHTML = "🌊 Turbidity: " + latest.field4 + " NTU";
+document.getElementById("orp").innerHTML = "⚡ ORP: " + latest.field5 + " mV";
+
+// Alert logic
+if(latest.field2 > 8.5 || latest.field4 > 500){
+    document.getElementById("alert").innerHTML = "🚨 Water Quality Warning!";
+} else {
+    document.getElementById("alert").innerHTML = "✅ Water Quality Normal";
+}
+
+</script>
+
+</body>
+</html>
