@@ -74,7 +74,7 @@ function Home() {
         </div>
 
         <div className="card">
-          <div className={`circle ${temp >10 && temp < 30 ? "safe" : temp < 10 || temp >35 ?"warning" : "danger"}`}>
+          <div className={`circle ${temp >10 && temp < 30 ? "safe" : temp >= 30 && temp <= 35 ? "warning" : "danger"}`}>
             {temp ?? 0} °C
           </div>
           <h3>Temperature</h3>
